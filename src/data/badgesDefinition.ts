@@ -1,0 +1,321 @@
+export type BadgeCategory = 
+  | 'performance' 
+  | 'skills' 
+  | 'ranking_bonus' 
+  | 'contributions' 
+  | 'consistency';
+
+export interface BadgeDefinition {
+  id: string;
+  name: string;
+  nameAr: string;
+  category: BadgeCategory;
+  categoryNameAr: string;
+  description: string;
+  condition: string;
+  timeframe: string;
+  iconName: string;
+  colorGradient: string;
+  bgLight: string;
+  textColor: string;
+  borderColor: string;
+}
+
+export const BADGE_CATEGORIES: { key: BadgeCategory; titleAr: string; description: string }[] = [
+  {
+    key: 'performance',
+    titleAr: 'بادجات الأداء والتقييم',
+    description: 'تُمنح بناءً على المجموع الإجمالي المحقق من المعايير الأربعة (من 40) وتوازن الدرجات.',
+  },
+  {
+    key: 'skills',
+    titleAr: 'بادجات المهارات الفردية',
+    description: 'تُمنح بناءً على التفوق والتميز في محور محدد من محاور التقييم الأربعة (من 10).',
+  },
+  {
+    key: 'ranking_bonus',
+    titleAr: 'بادجات الترتيب والبونص',
+    description: 'تُمنح بناءً على تصدر الترتيب الرسمي للفرقة وقيم البونص الإضافية المحققة.',
+  },
+  {
+    key: 'contributions',
+    titleAr: 'بادجات فريقي Media وHR',
+    description: 'تُمنح تقديراً للمساهمات الفعلية والأعمال المتميزة المعتمدة في فريقي الميديا والموارد البشرية.',
+  },
+  {
+    key: 'consistency',
+    titleAr: 'إنجازات الاستمرارية والتطور',
+    description: 'إنجازات تاريخية تقيس ثبات الأداء العالي أو القفزات النوعية والعودة القوية عبر الشهور.',
+  },
+];
+
+export const BADGES_LIST: BadgeDefinition[] = [
+  // 1. فئة الأداء والتقييم
+  {
+    id: 'perfect_score',
+    name: 'Perfect Score',
+    nameAr: 'الدرجة الكاملة',
+    category: 'performance',
+    categoryNameAr: 'الأداء والتقييم',
+    description: 'تحقيق العلامة الكاملة 40/40 في جميع محاور التقييم الأربعة خلال شهر فعلي.',
+    condition: 'الحصول على مجموع 40 من 40 في تقييم شهر فعلي.',
+    timeframe: 'تقييم شهري',
+    iconName: 'Crown',
+    colorGradient: 'from-amber-400 to-yellow-500',
+    bgLight: 'bg-amber-50',
+    textColor: 'text-amber-600',
+    borderColor: 'border-amber-300',
+  },
+  {
+    id: 'excellent_performance',
+    name: 'Excellent Performance',
+    nameAr: 'أداء متميز',
+    category: 'performance',
+    categoryNameAr: 'الأداء والتقييم',
+    description: 'أداء راقٍ ومستوى استثنائي بمجموع 36 أو أكثر دون الوصول للعلامة الكاملة.',
+    condition: 'الحصول على 36/40 أو أكثر، وأقل من 40 (إذا لم يحصل العضو على Perfect Score في الشهر نفسه).',
+    timeframe: 'تقييم شهري',
+    iconName: 'Trophy',
+    colorGradient: 'from-sky-400 to-blue-600',
+    bgLight: 'bg-sky-50',
+    textColor: 'text-sky-600',
+    borderColor: 'border-sky-300',
+  },
+  {
+    id: 'balanced_member',
+    name: 'Balanced Member',
+    nameAr: 'أداء متوازن',
+    category: 'performance',
+    categoryNameAr: 'الأداء والتقييم',
+    description: 'توازن احترافي متكامل عبر تحقيق 8 على الأقل في كل معيار من المعايير الأربعة.',
+    condition: 'الحصول على 8/10 أو أكثر في كل معيار من المعايير الأربعة (الحضور، التفاعل، القيادة، السلوك والتعامل) خلال الشهر نفسه.',
+    timeframe: 'تقييم شهري',
+    iconName: 'ShieldCheck',
+    colorGradient: 'from-emerald-400 to-teal-600',
+    bgLight: 'bg-emerald-50',
+    textColor: 'text-emerald-600',
+    borderColor: 'border-emerald-300',
+  },
+
+  // 2. فئة المهارات الفردية
+  {
+    id: 'attendance_pro',
+    name: 'Attendance Pro',
+    nameAr: 'المحترف في الالتزام',
+    category: 'skills',
+    categoryNameAr: 'المهارات الفردية',
+    description: 'انضباط مثالي وحرص دائم على حضور التوزيعات والاجتماعات والفعاليات.',
+    condition: 'الحصول على 9/10 أو أكثر في معيار الحضور والالتزام خلال الشهر.',
+    timeframe: 'تقييم شهري',
+    iconName: 'CheckCircle2',
+    colorGradient: 'from-blue-400 to-indigo-600',
+    bgLight: 'bg-blue-50',
+    textColor: 'text-blue-600',
+    borderColor: 'border-blue-300',
+  },
+  {
+    id: 'interaction_star',
+    name: 'Interaction Star',
+    nameAr: 'نجم التفاعل',
+    category: 'skills',
+    categoryNameAr: 'المهارات الفردية',
+    description: 'تفاعل نشط وحيوي والمشاركة الفعالة في نقاشات وأنشطة الأسرة.',
+    condition: 'الحصول على 9/10 أو أكثر في معيار المشاركة والتفاعل خلال الشهر.',
+    timeframe: 'تقييم شهري',
+    iconName: 'Sparkles',
+    colorGradient: 'from-pink-400 to-rose-600',
+    bgLight: 'bg-pink-50',
+    textColor: 'text-pink-600',
+    borderColor: 'border-pink-300',
+  },
+  {
+    id: 'leadership_badge',
+    name: 'Leadership Badge',
+    nameAr: 'شارة القيادة',
+    category: 'skills',
+    categoryNameAr: 'المهارات الفردية',
+    description: 'المبادرة الذاتية، تحمل المسؤولية، وإلهام ودعم زملائه في الفريق.',
+    condition: 'الحصول على 9/10 أو أكثر في معيار المبادرة والقيادة خلال الشهر.',
+    timeframe: 'تقييم شهري',
+    iconName: 'Flame',
+    colorGradient: 'from-orange-400 to-amber-600',
+    bgLight: 'bg-orange-50',
+    textColor: 'text-orange-600',
+    borderColor: 'border-orange-300',
+  },
+  {
+    id: 'behavior_excellence',
+    name: 'Behavior Excellence',
+    nameAr: 'التميز السلوكي',
+    category: 'skills',
+    categoryNameAr: 'المهارات الفردية',
+    description: 'قمة الاحترام والتعامل الراقي والالتزام الكامل بميثاق الشرف الأخلاقي للأسرة.',
+    condition: 'الحصول على الدرجة الكاملة 10/10 في معيار السلوك والتعامل خلال الشهر.',
+    timeframe: 'تقييم شهري',
+    iconName: 'HeartHandshake',
+    colorGradient: 'from-purple-400 to-fuchsia-600',
+    bgLight: 'bg-purple-50',
+    textColor: 'text-purple-600',
+    borderColor: 'border-purple-300',
+  },
+
+  // 3. فئة الترتيب والبونص
+  {
+    id: 'top_of_the_team',
+    name: 'Top of the Team',
+    nameAr: 'نجم الفرقة',
+    category: 'ranking_bonus',
+    categoryNameAr: 'الترتيب والبونص',
+    description: 'صاحب الصدارة والمركز الأول في الترتيب الرسمي المعتمد لفرقته الأكاديمية.',
+    condition: 'الحصول على المركز الأول (Rank 1) في الترتيب الرسمي لفرقته خلال الشهر (يُمنح لجميع المتعادلين).',
+    timeframe: 'ترتيب شهري',
+    iconName: 'Award',
+    colorGradient: 'from-yellow-400 to-amber-600',
+    bgLight: 'bg-yellow-50',
+    textColor: 'text-yellow-700',
+    borderColor: 'border-yellow-300',
+  },
+  {
+    id: 'bonus_achiever',
+    name: 'Bonus Achiever',
+    nameAr: 'صاحب بونص',
+    category: 'ranking_bonus',
+    categoryNameAr: 'الترتيب والبونص',
+    description: 'بذل جهد إضافي مميز استحق عليه إضافة نقاط بونص تميز بجانب تقييمه الأساسي.',
+    condition: 'الحصول على بونص موجب (+1 أو أكثر) خلال الشهر.',
+    timeframe: 'تقييم شهري',
+    iconName: 'Zap',
+    colorGradient: 'from-cyan-400 to-teal-500',
+    bgLight: 'bg-cyan-50',
+    textColor: 'text-cyan-600',
+    borderColor: 'border-cyan-300',
+  },
+  {
+    id: 'bonus_leader',
+    name: 'Bonus Leader',
+    nameAr: 'أعلى بونص',
+    category: 'ranking_bonus',
+    categoryNameAr: 'الترتيب والبونص',
+    description: 'تحقيق أعلى رصيد بونص على مستوى فرقته الأكاديمية كاملة خلال الشهر.',
+    condition: 'الحصول على أعلى قيمة بونص داخل فرقته خلال الشهر (يُمنح لجميع المتعادلين في أعلى قيمة).',
+    timeframe: 'ترتيب شهري',
+    iconName: 'Target',
+    colorGradient: 'from-emerald-400 to-green-600',
+    bgLight: 'bg-emerald-50',
+    textColor: 'text-emerald-700',
+    borderColor: 'border-emerald-300',
+  },
+
+  // 4. فئة مساهمات فريقي Media وHR
+  {
+    id: 'media_contributor',
+    name: 'Media Contributor',
+    nameAr: 'مساهم ميديا',
+    category: 'contributions',
+    categoryNameAr: 'مساهمات Media وHR',
+    description: 'مشاركة فعالة وملموسة في تنفيذ تكليفات وإنتاجات وتغطيات فريق الميديا.',
+    condition: 'المشاركة الفعلية المعتمدة في تنفيذ مهام Media خلال الشهر.',
+    timeframe: 'مساهمة شهرية',
+    iconName: 'Video',
+    colorGradient: 'from-sky-400 to-cyan-600',
+    bgLight: 'bg-sky-50',
+    textColor: 'text-sky-600',
+    borderColor: 'border-sky-300',
+  },
+  {
+    id: 'media_excellence',
+    name: 'Media Excellence',
+    nameAr: 'تميز ميديا',
+    category: 'contributions',
+    categoryNameAr: 'مساهمات Media وHR',
+    description: 'عمل إبداعي فائق وبصمة متميزة في مهام فريق الميديا عكست روح الاحتراف.',
+    condition: 'تقديم عمل متميز وإبداعي في Media بناءً على البيانات المعتمدة للشهر.',
+    timeframe: 'مساهمة شهرية',
+    iconName: 'Camera',
+    colorGradient: 'from-blue-500 to-violet-600',
+    bgLight: 'bg-blue-50',
+    textColor: 'text-blue-700',
+    borderColor: 'border-blue-300',
+  },
+  {
+    id: 'hr_contributor',
+    name: 'HR Contributor',
+    nameAr: 'مساهم الموارد البشرية',
+    category: 'contributions',
+    categoryNameAr: 'مساهمات Media وHR',
+    description: 'مشاركة نشطة وجهود تنظيمية قيمة في مهام ومتابعات فريق HR.',
+    condition: 'المشاركة الفعلية المعتمدة في مهام فريق الموارد البشرية (HR) خلال الشهر.',
+    timeframe: 'مساهمة شهرية',
+    iconName: 'Users',
+    colorGradient: 'from-rose-400 to-pink-600',
+    bgLight: 'bg-rose-50',
+    textColor: 'text-rose-600',
+    borderColor: 'border-rose-300',
+  },
+  {
+    id: 'hr_excellence',
+    name: 'HR Excellence',
+    nameAr: 'تميز الموارد البشرية',
+    category: 'contributions',
+    categoryNameAr: 'مساهمات Media وHR',
+    description: 'مساهمة استثنائية وأداء متفوق في متابعة شؤون الأعضاء وتنظيم فعاليات HR.',
+    condition: 'تقديم عمل استثنائي في فريق HR بناءً على البيانات المعتمدة للشهر.',
+    timeframe: 'مساهمة شهرية',
+    iconName: 'UserCheck',
+    colorGradient: 'from-red-500 to-rose-700',
+    bgLight: 'bg-red-50',
+    textColor: 'text-red-700',
+    borderColor: 'border-red-300',
+  },
+
+  // 5. فئة إنجازات الاستمرارية والتطور
+  {
+    id: 'consistent_performer',
+    name: 'Consistent Performer',
+    nameAr: 'الأداء الثابت',
+    category: 'consistency',
+    categoryNameAr: 'الاستمرارية والتطور',
+    description: 'ثبات الأداء العالي والمحافظة على مجموع 32 فأكثر في ثلاثة أشهر تقييم متتالية.',
+    condition: 'الحصول على 32/40 أو أكثر في ثلاثة أشهر تقييم متتالية (يجب أن تحتوي جميعها على تقييم فعلي).',
+    timeframe: 'تراكمي (3 شهور متتالية)',
+    iconName: 'Repeat',
+    colorGradient: 'from-teal-400 to-emerald-600',
+    bgLight: 'bg-teal-50',
+    textColor: 'text-teal-700',
+    borderColor: 'border-teal-300',
+  },
+  {
+    id: 'rising_star',
+    name: 'Rising Star',
+    nameAr: 'النجم الصاعد',
+    category: 'consistency',
+    categoryNameAr: 'الاستمرارية والتطور',
+    description: 'تحول إيجابي بارز وقفزة إلى التميز (36 فأكثر) بعد شهر سابق كان تقييمه أقل من 30.',
+    condition: 'الحصول على 36/40 أو أكثر في شهر تقييم يتبع مباشرةً شهراً كان تقييم العضو فيه أقل من 30/40.',
+    timeframe: 'تطوري (بين شهرين متتاليين)',
+    iconName: 'TrendingUp',
+    colorGradient: 'from-violet-400 to-purple-600',
+    bgLight: 'bg-violet-50',
+    textColor: 'text-violet-700',
+    borderColor: 'border-violet-300',
+  },
+  {
+    id: 'comeback',
+    name: 'Comeback',
+    nameAr: 'العودة القوية',
+    category: 'consistency',
+    categoryNameAr: 'الاستمرارية والتطور',
+    description: 'إصرار وعزيمة على التحسن بزيادة مجموع التقييم 5 درجات فأكثر مقارنة بالشهر السابق.',
+    condition: 'ارتفاع المجموع بمقدار 5 درجات أو أكثر مقارنة بالشهر السابق مباشرة، مع وجود تقييم فعلي في الشهرين.',
+    timeframe: 'تطوري (بين شهرين متتاليين)',
+    iconName: 'Compass',
+    colorGradient: 'from-amber-400 to-red-500',
+    bgLight: 'bg-amber-50',
+    textColor: 'text-amber-700',
+    borderColor: 'border-amber-300',
+  },
+];
+
+export const BADGES_MAP = new Map<string, BadgeDefinition>(
+  BADGES_LIST.map((b) => [b.id, b])
+);

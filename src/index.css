@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --color-sky-primary: #0ea5e9;
+  --color-sky-deep: #0284c7;
+  --color-sky-light: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+}
+
+@keyframes refraction {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  50% { transform: translateX(100%) skewX(-15deg); }
+  100% { transform: translateX(100%) skewX(-15deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.3); }
+}
+
+@layer base {
+  body {
+    @apply bg-sky-100 text-slate-900 font-sans antialiased selection:bg-sky-300;
+    direction: rtl;
+    background-attachment: fixed;
+    background-image: radial-gradient(circle at top right, rgba(186, 230, 253, 0.5), transparent),
+                      radial-gradient(circle at bottom left, rgba(224, 242, 254, 0.5), transparent);
+  }
+}
+
+.glass {
+  @apply backdrop-blur-xl bg-white/60 border border-white/40 shadow-xl;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  pointer-events: none;
+}
+
+.glass:hover::after {
+  animation: refraction 1.5s infinite;
+}
+
+.glass-pill {
+  @apply backdrop-blur-xl bg-white/40 border border-white/20 shadow-lg;
+}
+
+.glass-dark {
+  @apply backdrop-blur-md bg-sky-600/10 border border-sky-400/20 shadow-xl;
+}
+
+.gradient-sky {
+  @apply bg-gradient-to-br from-sky-400 to-sky-600;
+}
+
+.animate-glow {
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
